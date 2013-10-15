@@ -96,7 +96,10 @@ def col_frequencies(col, weights=None, gap_chars='-.'):
     """Frequencies of each residue type (totaling 1.0) in a single column."""
     counts = col_counts(col, weights, gap_chars)
     # Reduce to frequencies
-    scale = 1.0 / sum(counts.values())
+    if sum(counts.values()) != 0:
+        scale = 1.0 / sum(counts.values())
+    else:
+        scale = 0
     return dict((aa, cnt * scale) for aa, cnt in counts.iteritems())
 
 
