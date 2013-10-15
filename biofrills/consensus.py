@@ -155,7 +155,12 @@ def make_entropy_col_consensus(bg_freqs):
     def col_consensus(col):
         col_freqs = sequtils.aa_frequencies(col)
         entroper = entropy_func(col_freqs, bg_freqs)
-        return max(col_freqs.keys(), key=entroper)
+        try:
+            return max(col_freqs.keys(), key=entroper)
+        except ValueError:
+            # this is probably caused by gaps
+            # TODO: modify this to make it more easier to debug
+            return '-'
     return col_consensus
 
 

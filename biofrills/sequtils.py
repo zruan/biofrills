@@ -61,6 +61,11 @@ def aa_frequencies(seq, gap_chars='-.'):
         if gap_char in aa_counts:
             del aa_counts[gap_char]
     # Reduce to frequencies
-    scale = 1.0 / sum(aa_counts.values())
+    try:
+        scale = 1.0 / sum(aa_counts.values())
+    except ZeroDivisionError:
+        # this is probably caused by all gap columns
+        # modify this to make it easier to debug
+        scale = 0
     return dict((aa, cnt * scale) for aa, cnt in aa_counts.iteritems())
 
