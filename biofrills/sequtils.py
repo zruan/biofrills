@@ -67,5 +67,5 @@ def aa_frequencies(seq, gap_chars='-.'):
         # this is probably caused by all gap columns
         # modify this to make it easier to debug
         scale = 0
-    return dict((aa, cnt * scale) for aa, cnt in aa_counts.iteritems())
+    return dict((aa, cnt * scale) for aa, cnt in aa_counts.items())
 

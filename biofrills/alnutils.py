@@ -51,7 +51,7 @@ def aa_frequencies(aln, weights=None, gap_chars='-.'):
     counts = aa_counts(aln, weights, gap_chars)
     # Reduce to frequencies
     scale = 1.0 / sum(counts.values())
-    return dict((aa, cnt * scale) for aa, cnt in counts.iteritems())
+    return dict((aa, cnt * scale) for aa, cnt in counts.items())
 
 
 def blocks(aln, threshold=0.5, weights=None):
@@ -183,7 +183,7 @@ def sequence_weights(aln, scaling='none', gap_chars='-.'):
         # r = nb. residue types, s = count of a particular residue type
         n_residues = len(counts)    # r
         freqs = dict((aa, 1.0 / (n_residues * count))
-                     for aa, count in counts.iteritems())
+                     for aa, count in counts.items())
         weights = [freqs[aa] for aa in column]
         return (weights, n_residues)
 
